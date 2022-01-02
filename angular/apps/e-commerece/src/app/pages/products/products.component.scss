@@ -1,0 +1,19 @@
+.container{
+  display: flex;
+  position: relative;
+  margin:100px;
+  min-height: 100vh;
+  app-categories-aside{
+    width: 260px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #fff;
+  }
+  apps-products-list{
+    width: calc(100% - 280px);
+    padding:0px 30px;
+    margin-left: 280px;
+  }
+}

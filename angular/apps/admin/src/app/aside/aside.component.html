@@ -1,0 +1,15 @@
+<div class="aside-container">
+  <div class="logo">
+    <img src="../../assets/adminLogo.svg">
+  </div>
+  <div class="list">
+    <ul>
+      <li><a routerLinkActive="active" routerLink="/" [routerLinkActiveOptions]="{exact:true}"> <i class="pi pi-home"></i>Dashboard</a></li>
+      <li><a routerLinkActive="active" routerLink="products"><i class="pi pi-briefcase"></i>Products</a></li>
+      <li><a routerLinkActive="active" routerLink="categories"><i class="pi pi-list"></i>Categories</a></li>
+      <li><a routerLinkActive="active" routerLink="orders" ><i class="pi pi-shopping-cart"></i>Orders</a></li>
+      <li><a routerLinkActive="active" routerLink="users" ><i class="pi pi-user"> </i>Users</a></li>
+      <li><a class="logout" (click)="logOut()"><i class="pi pi-sign-out"> </i>logout</a></li>
+    </ul>
+  </div>
+</div>

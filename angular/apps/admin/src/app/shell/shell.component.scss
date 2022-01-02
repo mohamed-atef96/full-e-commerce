@@ -1,0 +1,21 @@
+.shell-contanier {
+  display: flex;
+  admin-aside {
+    width: 260px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+    background-color: #fff;
+    border-right: 1px solid #ddd;
+  }
+
+  main {
+    min-height: 100vh;
+    background-color: #F8F9FA;
+    width: calc(100% - 260px);
+    padding: 30px;
+    margin-left: 260px;
+  }
+}

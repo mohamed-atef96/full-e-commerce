@@ -1,0 +1,114 @@
+<!-- message -->
+<p-toast></p-toast>
+<!-- visible content -->
+<div class="product-container">
+    <h1 class="font-medium">Products</h1>
+    <div class="shadow-2">
+        <p-toolbar styleClass	="mb-3 bg-white shadow-1" >
+            <div class="p-toolbar-group-left">
+                <p-dropdown
+                    [options]="categories"
+                    [(ngModel)]="selectedCat"
+                    optionLabel="name"
+                    (onChange)="dropdownSubmit()"
+                ></p-dropdown>
+            </div>
+            <div class="p-toolbar-group-left">
+                <button
+                    pButton
+                    type="button"
+                    label="New"
+                    icon="pi pi-plus"
+                    style="background-color: var(--base-color)"
+                    routerLink="create"
+                ></button>
+            </div>
+        </p-toolbar>
+    </div>
+    <!-- table -->
+    <div class="mt-4 shadow-2">
+        <p-table [value]="products" [rowHover]="true" responsiveLayout="scroll" [paginator]="true" [rows]="10">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="name"
+                    >
+                        Product <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="price"
+                    >
+                        Price <p-sortIcon field="price"></p-sortIcon>
+                    </th>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="available"
+                    >
+                        Is Active <p-sortIcon field="available"></p-sortIcon>
+                    </th>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="createdAt"
+                    >
+                        Date <p-sortIcon field="createdAt"></p-sortIcon>
+                    </th>
+                    <th
+                    style="background-color: #f8f9fa"
+                >
+                    Action
+                </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-product>
+                <tr>
+                    <td class="flex align-items-center">
+                        <div
+                            class="
+                                mr-3
+                                flex
+                            "
+                            style="width: 60px; height: 60px"
+                        >
+                            <img
+                            class="shadow-2"
+                                [src]="
+                                    product.images[0]
+                                        ? product.images[0]
+                                        : '../../assets/images/default.jpg'
+                                "
+                                style="width: 100% ; border: 1px solid #dee2e6;
+                                border-radius: 0.25rem;"
+                                alt=""
+                            />
+                        </div>
+                        {{ product.name }}
+                    </td>
+                    <td>{{ product.price | currency}}</td>
+                    <td ><div [style.background-color]="product.available?'#CCF0D1':'#FDCCCC'" class="border-round bg-green py-1 px-2 inline text-center">{{product.available?'Active':'Sold'}}</div></td>
+                    <td>{{ product.createdAt | date: 'd/MM/YY, hh:mm a' }}</td>
+                    <td>
+                      <div (click)="getProductId(product._id)">
+                        <button
+                            type="button"
+                            pButton
+
+                            label=". . . "
+                            class="p-button-outlined  p-button-secondary"
+                            style="font-size: .7rem;padding: 10px 20px;"
+                            (click)="menu.toggle($event)"
+                        ></button>
+                      </div>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-menu #menu [popup]="true" [model]="items"></p-menu>
+
+<p-confirmDialog
+    header="Confirmation"
+    icon="pi pi-exclamation-triangle"
+></p-confirmDialog>

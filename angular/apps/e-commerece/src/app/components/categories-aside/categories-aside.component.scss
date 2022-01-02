@@ -1,0 +1,44 @@
+:host::ng-deep {
+  .p-checkbox .p-checkbox-box.p-highlight {
+    border-color: #3474D4 !important;
+    background: #3474D4 !important;
+    outline: none;
+    border: none;
+    box-shadow: none         ;
+}
+}
+.container{
+  span{
+    color: #777;
+    display: block;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 20px;
+    background: #f7f7f7;
+    padding: 14px 15px 14px;
+    letter-spacing: 0.2px;
+    margin-bottom: 30px;
+  }
+  .category{
+    color:#777;
+    padding: 15px;
+    border: 1px solid #eeeeee;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    h3{
+      margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #212121;
+    }
+
+    p-checkbox{
+      margin-top: 10px;
+
+    }
+
+
+  }
+}

@@ -1,0 +1,58 @@
+.banners {
+    margin: 50px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .banner {
+        position: relative;
+        width: 650px;
+        .image {
+            z-index: -1;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            img {
+                max-width: 100%;
+            }
+        }
+        .banner-text {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content:center;
+          margin: 80px 60px;
+            .banner-title-1 {
+                font-size: 20px;
+                font-weight: 400;
+                color: #555;
+                text-transform: capitalize;
+                letter-spacing: 0.7px;
+                line-height: 1;
+                position: relative;
+                padding-left: 2px;
+                padding-top: 10px;
+                margin-bottom: 15px;
+            }
+            .banner-title-2 {
+                font-size: 28px;
+                color: #555;
+                margin-bottom:15px;
+                letter-spacing: 1px;
+                font-weight: 800;
+                position: relative;
+                padding-top: 0;
+                text-transform: uppercase;
+                line-height: 1.2;
+            }
+            .banner-discount {
+                font-size: 24px;
+                font-weight: 400;
+                color: #555;;
+                letter-spacing: 0.7px;
+                line-height: 1;
+            }
+        }
+    }
+}

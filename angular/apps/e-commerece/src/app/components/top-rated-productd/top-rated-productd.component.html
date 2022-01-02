@@ -1,0 +1,17 @@
+<div class="container">
+  <h2>Our Top Collection</h2>
+  <p>Browse The Collection of Top Products</p>
+  <div class="item-container">
+    <div class="highlight">
+        <span>Browse Top Rated Items </span>
+        <a href="">see all <i class="pi pi-angle-right"></i></a>
+    </div>
+    <div class="items">
+        <div *ngFor="let product of topProducts">
+            <app-product-item [item]="product">{{
+                product
+            }}</app-product-item>
+        </div>
+    </div>
+</div>
+</div>

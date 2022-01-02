@@ -1,0 +1,174 @@
+<!-- message -->
+<p-toast></p-toast>
+<!-- form -->
+<div class="product-form-container">
+    <h1 class="font-medium">{{title}} Product</h1>
+    <div class="createForm bg-white p-5 shadow-2">
+        <form [formGroup]="productForm">
+            <div class="p-fluid grid align-items-center">
+                <div class="p-field col-4">
+                    <label for="name">Name</label>
+                    <input
+                        id="name"
+                        type="text"
+                        pInputText
+                        placeholder="Product Name"
+                        class="mt-2"
+                        formControlName="name"
+                    />
+                    <small
+                        [style.visibility]="
+                            productForm.controls.name.invalid && isSubmitted
+                                ? 'visible'
+                                : 'hidden'
+                        "
+                        class="p-error ml-2"
+                        >Name is required</small
+                    >
+                </div>
+                <div class="p-field col-4">
+                    <label for="brand">Brand</label>
+                    <input
+                        id="brnad"
+                        type="text"
+                        pInputText
+                        placeholder="Brand"
+                        class="mt-2"
+                        formControlName="brand"
+                    />
+                    <small
+                    [style.visibility]="
+                        productForm.controls.brand.invalid && isSubmitted
+                            ? 'visible'
+                            : 'hidden'
+                    "
+                    class="p-error ml-2"
+                    >Brand is required</small
+                >
+                </div>
+                <div class="p-field col-4">
+                    <label for="quantity">Quantity</label>
+                    <input
+                        id="quantity"
+                        type="number"
+                        pInputText
+                        placeholder="quantity"
+                        class="mt-2"
+                        formControlName="quantity"
+                    />
+                    <small
+                    [style.visibility]="
+                        productForm.controls.quantity.invalid && isSubmitted
+                            ? 'visible'
+                            : 'hidden'
+                    "
+                    class="p-error ml-2"
+                    >Quantity is required</small
+                >
+                </div>
+                <div class="p-field col-4">
+                    <label for="price">Price</label>
+                    <div class="p-inputgroup mt-2">
+                        <span class="p-inputgroup-addon">$</span>
+                        <input
+                            type="number"
+                            id="price"
+                            pInputText
+                            placeholder="Price"
+                            formControlName="price"
+                        />
+                        <span class="p-inputgroup-addon">.00</span>
+                      </div>
+                      <small
+                      [style.visibility]="
+                          productForm.controls.price.invalid && isSubmitted
+                              ? 'visible'
+                              : 'hidden'
+                      "
+                      class="p-error ml-2"
+                      >price is required</small>
+                </div>
+                <div class="p-field col-4">
+                    <label for="category">Category</label>
+                    <div class="mt-2">
+                        <p-dropdown
+                            [options]="categories"
+                            placeholder="Select Category"
+                            optionLabel="name"
+                            formControlName="category"
+                        ></p-dropdown>
+                    </div>
+                    <small
+                      [style.visibility]="
+                          productForm.controls.category.invalid && isSubmitted
+                              ? 'visible'
+                              : 'hidden'
+                      "
+                      class="p-error ml-2"
+                      >category is required</small>
+                </div>
+                <div class="p-field col-4">
+                    <label for="isFeatured" class="flex mb-2"
+                        >Is Featured</label
+                    >
+                    <p-inputSwitch formControlName="isFeatured"></p-inputSwitch>
+                </div>
+            </div>
+            <div class="p-field col-12">
+                <label for="description">Description</label>
+                <textarea
+                    id="description"
+                    type="text"
+                    rows="8"
+                    pInputTextarea
+                    class="col-12 mt-2 border-500"
+                    style="resize: none; outline: none"
+                    formControlName="description"
+                ></textarea>
+                <small
+                [style.visibility]="
+                    productForm.controls.description.invalid && isSubmitted
+                        ? 'visible'
+                        : 'hidden'
+                "
+                class="p-error ml-2"
+                >description is required</small
+            >
+            </div>
+            <div class="image">
+                <label for="image" class="flex mb-2">image</label>
+                <input
+                    type="file"
+                    accept="image/*"
+                    (change)="onUpload($event)"
+                    class="custom-file-input"
+                />
+                <small
+                [style.visibility]="
+                    productForm.controls.images.invalid && isSubmitted
+                        ? 'visible'
+                        : 'hidden'
+                "
+                class="p-error ml-2"
+                >images are required</small
+            >
+            </div>
+            <div
+                *ngIf="imageSrc"
+                class="col-2 border-1 border-primary mt-2 border-round"
+            >
+                <img [src]="imageSrc" alt="" width="100%"/>
+            </div>
+            <div class="col-12 text-right">
+              <button pButton type="button" label="Go Back" icon="pi pi-arrow-left" class="mr-2 p-button-secondary" (click)='goBack()'></button>
+                <button
+                    pButton
+                    type="button"
+                    icon="pi pi-check"
+                    [label]="buttonText"
+                    (click)="create()"
+                ></button>
+            </div>
+        </form>
+    </div>
+</div>

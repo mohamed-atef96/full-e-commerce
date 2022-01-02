@@ -1,0 +1,83 @@
+footer{
+  margin-top:100px;
+  .highlight{
+    background: #555;
+    text-align:center;
+    padding:15px;
+     span{
+      font-size: 18px;
+      font-weight: 400;
+      color: #ffffff;
+      letter-spacing: 0.7px;
+      line-height: 1.2;
+     }
+  }
+  .container{
+    margin: 50px 120px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .section{
+      display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    line-height:30px;
+    .header{
+      border-bottom: 1px solid var(--gray-300);
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 11px;
+      color: #777;
+      letter-spacing: 0.7px;
+    }
+    span{
+      color:#444
+    }
+    }
+  }
+  .social{
+    border-top: 1px solid var(--gray-300);
+    padding: 20px ;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    .icons{
+      margin-left: 20px;
+      display: flex;
+      .pi{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background-color:var(--gray-300);
+        color:#444;
+        &:hover{
+          cursor:pointer;
+          color:#fff
+        }
+      }
+      .pi-facebook:hover{
+        background-color:var(--blue-700);
+      }
+      .pi-twitter:hover{
+        background-color:var(--blue-300);
+      }
+      .pi-linkedin:hover{
+        background-color:var(--blue-500);
+      }
+      .pi-github:hover{
+        background-color:#fff;
+        color:#000
+      }
+
+
+    }
+
+  }
+}

@@ -1,0 +1,12 @@
+.container{
+  p-dataView{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .items{
+      margin: 20px 20px;
+    }
+  }
+}

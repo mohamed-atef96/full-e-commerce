@@ -1,0 +1,147 @@
+<div class="dashboard-container">
+    <h1 class="font-medium">Dashboard</h1>
+    <div class="cards ">
+        <div
+            class="
+                card
+                mt-3
+                flex
+                align-items-center
+                px-4
+                py-5
+                bg-white
+                border-round
+                shadow-3
+
+            "
+        >
+            <div
+                class="
+                    icon
+                    border-circle
+                    flex
+                    justify-content-center
+                    align-items-center
+                    mr-3
+                "
+                style="background-color: #d5e0fb"
+            >
+                <i
+                    class="pi pi-shopping-cart"
+                    style="color: #3167eb; font-size: 1.5rem"
+                ></i>
+            </div>
+            <div class="content">
+                <h2 style="color: #495057; margin-top: 0px">Total Orders</h2>
+                <span> {{ordersCount}} Orders</span>
+            </div>
+        </div>
+
+        <div
+            class="
+                card
+                mt-3
+                flex
+                align-items-center
+                px-4
+                py-5
+                bg-white
+                border-round
+                shadow-3
+
+            "
+        >
+            <div
+                class="
+                    icon
+                    border-circle
+                    flex
+                    justify-content-center
+                    align-items-center
+                    mr-3
+                "
+                style="background-color: #ccf0d0"
+            >
+                <i
+                    class="pi pi-shopping-bag"
+                    style="color: #00b517; font-size: 1.5rem"
+                ></i>
+            </div>
+            <div class="content">
+                <h2 style="color: #495057; margin-top: 0px">Total Products</h2>
+                <span> {{productsCount}} Products</span>
+            </div>
+        </div>
+        <div
+            class="
+                card
+                mt-3
+                flex
+                align-items-center
+                px-4
+                py-5
+                bg-white
+                border-round
+                shadow-3
+
+            "
+        >
+            <div
+                class="
+                    icon
+                    border-circle
+                    flex
+                    justify-content-center
+                    align-items-center
+                    mr-3
+                "
+                style="background-color: #ffe8d0"
+            >
+                <i
+                    class="pi pi-user"
+                    style="color: #fd8a14; font-size: 1.5rem"
+                ></i>
+            </div>
+            <div class="content">
+                <h2 style="color: #495057; margin-top: 0px">Users</h2>
+                <span> {{usersCount}} Users</span>
+            </div>
+        </div>
+        <div
+            class="
+                card
+                mt-3
+                flex
+                align-items-center
+                px-4
+                py-5
+                bg-white
+                border-round
+                shadow-3
+
+            "
+        >
+            <div
+                class="
+                    icon
+                    border-circle
+                    flex
+                    justify-content-center
+                    align-items-center
+                    mr-3
+                "
+                style="background-color: #9b27b034"
+            >
+                <i
+                    class="pi pi-dollar"
+                    style="color: #9c27b0; font-size: 1.5rem"
+                ></i>
+            </div>
+            <div class="content">
+                <h2 style="color: #495057; margin-top: 0px">Total Sales</h2>
+                <span>{{totalSales |  currency}}</span>
+            </div>
+        </div>
+    </div>
+  </div>
+

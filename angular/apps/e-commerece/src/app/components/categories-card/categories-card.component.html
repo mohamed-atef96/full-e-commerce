@@ -1,0 +1,14 @@
+<div class="container">
+
+<h2>Choose Categories</h2>
+<p>Browse The Collection of Top Products</p>
+<div class="categories-container" >
+  <div class="cards" *ngFor="let category of categories">
+  <div class="card" [routerLink]="['/products']" [queryParams]="{categories:category._id}">
+      <i class="pi pi-{{category.icon}}"></i>
+      <span>{{category.name}}</span>
+  </div>
+</div>
+
+</div>
+</div>

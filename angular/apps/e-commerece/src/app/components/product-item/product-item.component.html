@@ -1,0 +1,46 @@
+<div class="product-item shadow-2 mt-5" *ngIf="item.name">
+    <div class="image">
+        <div class="effect">
+          <button class="btn-order" (click)='viewProduct(item._id!)'>Order Now</button>
+        </div>
+        <img [src]="item.images[0]" />
+    </div>
+    <div class="content">
+        <a>{{ item.name }}</a>
+        <div>
+            <div class="rate">
+                <i
+                    class="pi"
+                    [ngClass]="
+                        item.averageRate >= 1 ? 'pi-star-fill' : 'pi-star'
+                    "
+                ></i>
+                <i
+                    class="pi"
+                    [ngClass]="
+                        item.averageRate >= 2 ? 'pi-star-fill' : 'pi-star'
+                    "
+                ></i>
+                <i
+                    class="pi"
+                    [ngClass]="
+                        item.averageRate >= 3 ? 'pi-star-fill' : 'pi-star'
+                    "
+                ></i>
+                <i
+                    class="pi"
+                    [ngClass]="
+                        item.averageRate >= 4 ? 'pi-star-fill' : 'pi-star'
+                    "
+                ></i>
+                <i
+                    class="pi"
+                    [ngClass]="
+                        item.averageRate == 5 ? 'pi-star-fill' : 'pi-star'
+                    "
+                ></i>
+            </div>
+            <p class="price">{{ item.price | currency }}</p>
+        </div>
+    </div>
+</div>

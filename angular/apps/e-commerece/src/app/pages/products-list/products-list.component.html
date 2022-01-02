@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="items-container">
+  <div class="items" *ngFor="let item of filterdProducts">
+
+  </div>
+</div>
+<p-dataView [value]="filterdProducts" [paginator]="true" [rows]="12" (onPage)='navigate($event)'>
+  <ng-template let-car pTemplate="listItem">
+    <div  class="items">
+    <app-product-item [item]="car"></app-product-item>
+  </div>
+  </ng-template>
+</p-dataView>
+</div>
+  

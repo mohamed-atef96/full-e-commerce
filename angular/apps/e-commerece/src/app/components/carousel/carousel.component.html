@@ -1,0 +1,17 @@
+<div class="container">
+    <p-carousel
+        [value]="sliderImages"
+        [showNavigators]="false"
+        [numVisible]="1"
+        [numScroll]="1"
+        [autoplayInterval]="5000"
+        [circular]="true"
+    >
+        <ng-template let-image pTemplate="item">
+            <div
+                class="content"
+                [ngStyle]="{ 'background-image': 'url(' + image + ')' }"
+            ></div>
+        </ng-template>
+    </p-carousel>
+</div>

@@ -1,0 +1,51 @@
+<div class="order-container">
+  <h1 class="font-medium">Orders</h1>
+  <p-toolbar styleClass="mb-3 bg-white shadow-1">
+      <div class="p-toolbar-group-left min-w-full">
+          <p-dropdown
+              [options]="status"
+              [(ngModel)]="selectedstatus"
+              optionLabel="name"
+              placeholder="Select a Status"
+              (onChange)="dropdownSubmit()"
+          ></p-dropdown>
+      </div>
+      <div class="p-toolbar-group-right"></div>
+  </p-toolbar>
+  <p-table [value]="orders" responsiveLayout="scroll" styleClass="shadow-1" [rowHover]="true" [paginator]="true" [rows]="10">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>User</th>
+              <th>Total</th>
+              <th>Status</th>
+              <th>Date</th>
+              <th>Action</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-order>
+          <tr>
+              <td>{{ order.user.name }}</td>
+              <td>{{ order.total }}</td>
+              <td>
+                  <div
+                      [class.bg-yellow-100]="order.status == 'Pending'"
+                      [class.bg-green-100]="order.status == 'Delivered'"
+                      [class.bg-pink-100]="order.status == 'Canceled'"
+                      class="
+                          border-round
+                          bg-green
+                          py-1
+                          px-2
+                          inline
+                          text-center
+                      "
+                  >
+                      {{ order.status }}
+                  </div>
+              </td>
+              <td>{{ order.createdAt | date: 'd.MM.YYYY' }}</td>
+              <td><button pButton  type="button" label="Details" class="p-button-outlined p-button-secondary p-button-sm" (click)='showDetails(order._id)'></button></td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>

@@ -1,0 +1,159 @@
+<!-- message -->
+<p-toast></p-toast>
+
+<!-- form -->
+<p-dialog
+    header="{{ dailogeTitle }} Category"
+    [(visible)]="display"
+    [style]="{ width: '35vw' }"
+>
+    <form [formGroup]="form">
+        <div class="grid">
+            <span class="col-12 mt-4">
+              <label for="float-input" >Category Name</label>
+                <input
+                    id="float-input"
+                    type="text"
+                    pInputText
+                    [ngClass]="{
+                        'ng-invalid ng-dirty':
+                            form.controls.name.invalid && isSubmitted
+                    }"
+                    class="col-12 p-inputtext-sm mt-2"
+                    formControlName="name"
+                />
+            </span>
+            <small
+                *ngIf="form.controls.name.invalid && isSubmitted"
+                class="p-error ml-2"
+                >Name is required</small
+            >
+            <span class="col-12">
+              <label for="float-input" >Icon</label>
+                <input
+                    id="float-input"
+                    type="text"
+                    pInputText
+                    class="col-12 p-inputtext-sm mt-2"
+                    [ngClass]="{
+                        'ng-invalid ng-dirty':
+                            form.controls.name.invalid && isSubmitted
+                    }"
+                    formControlName="icon"
+                />
+            </span>
+            <small
+                *ngIf="form.controls.icon.invalid && isSubmitted"
+                class="p-error ml-2"
+                >Icon is required</small
+            >
+        </div>
+        <span class="p-buttonset" style="float: right">
+            <button
+                pButton
+                type="button"
+                label="Cancel"
+                icon="pi pi-times"
+                style="background-color: var(--secondary)"
+                (click)="cancel()"
+            ></button>
+            <button
+                pButton
+                type="button"
+                label="Save"
+                icon="pi pi-check"
+                style="background-color: var(--base-color)"
+                (click)="submit()"
+            ></button>
+        </span>
+    </form>
+</p-dialog>
+
+<!-- visible content -->
+<div class="categories-container">
+    <h1 class="font-medium">Categories</h1>
+    <div class="shadow-2">
+        <p-toolbar styleClass	="mb-3 bg-white shadow-1" >
+            <div class="p-toolbar-group-left">
+                <button
+                    pButton
+                    type="button"
+                    label="New"
+                    icon="pi pi-plus"
+                    style="background-color: var(--base-color)"
+                    (click)="showCreate()"
+                ></button>
+            </div>
+        </p-toolbar>
+    </div>
+    <!-- table -->
+    <div class="mt-4 shadow-2">
+        <p-table
+            [value]="categories"
+            [rowHover]="true"
+            responsiveLayout="scroll"
+            [paginator]="true" [rows]="10"
+        >
+            <ng-template pTemplate="header">
+                <tr>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="createdAt"
+                    >
+                        Date <p-sortIcon field="createdAt"></p-sortIcon>
+                    </th>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="name"
+                    >
+                        Name <p-sortIcon field="name"></p-sortIcon>
+                    </th>
+                    <th
+                        style="background-color: #f8f9fa"
+                        pSortableColumn="icon"
+                    >
+                        Icon <p-sortIcon field="icon"></p-sortIcon>
+                    </th>
+                    <th
+                    style="background-color: #f8f9fa"
+                >
+                    Action
+                </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-categories>
+                <tr>
+                    <td>{{ categories.createdAt | date: 'd/M/yy, h:mm a' }}</td>
+                    <td>{{ categories.name }}</td>
+                    <td>
+                        <i
+                            class="pi pi-{{ categories.icon }}"
+                            style="font-size: 1.5rem"
+                        ></i>
+                    </td>
+                    <td>
+                        <i
+                            class="pi pi-trash"
+                            style="
+                                font-size: 1.7rem;
+                                color: var(--danger);
+                                cursor: pointer;
+                            "
+                            (click)="delete(categories._id)"
+                        ></i>
+                        <i
+                            class="pi pi-user-edit ml-4 text-green-700"
+                            style="font-size: 1.7rem; cursor: pointer"
+                            (click)="showEdit(categories._id)"
+                        ></i>
+                    </td>
+                    <td></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+<p-confirmDialog
+    header="Confirmation"
+    icon="pi pi-exclamation-triangle"
+></p-confirmDialog>

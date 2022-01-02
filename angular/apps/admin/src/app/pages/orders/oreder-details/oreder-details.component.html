@@ -1,0 +1,197 @@
+<div class="order-details">
+    <h1 class="font-medium">Order Details</h1>
+    <div class="details bg-white shadow-2 p-4">
+        <header>
+            <div class="date flex justify-content-between align-items-center">
+                <div class="let">
+                    <h4
+                        class="flex align-items-center"
+                        style="font-weight: 600"
+                    >
+                        <i
+                            class="pi pi-calendar mr-2"
+                            style="font-size: 1.7rem; font-weight: 400"
+                        ></i>
+                        {{
+                            orderDetails.createdAt
+                                | date: 'EEEE, d/MM/YY, H:M a'
+                        }}
+                    </h4>
+                    <span class="text-base text-600"
+                        >Order ID: {{ orderDetails._id }}</span
+                    >
+                </div>
+                <div class="right flex align-items-center">
+                    <p-dropdown
+                        [options]="status"
+                        [(ngModel)]="selectedstatus"
+                        optionLabel="name"
+                        placeholder="Select a Status"
+                    ></p-dropdown>
+                    <td>
+                        <button
+                            pButton
+                            type="button"
+                            label="Save"
+                            class="
+                                p-button-outlined p-button-primar p-button
+                                ml-2
+                            "
+                            (click)="updateStatus()"
+                        ></button>
+                    </td>
+                </div>
+            </div>
+            <hr class="my-3" />
+        </header>
+        <div class="details-body">
+            <div
+                class="
+                    icons
+                    flex
+                    justify-content-between
+                    align-items-center
+                    col-11
+                "
+            >
+                <div class="icon-1 flex align-items-start">
+                    <i
+                        class="
+                            pi pi-user
+                            mr-2
+                            border-circle
+                            bg-primary
+                            flex
+                            align-items-center
+                            justify-content-center
+                            mt-4
+                        "
+                        style="
+                            font-size: 1rem;
+                            font-weight: 400;
+                            width: 50px;
+                            height: 50px;
+                        "
+                    ></i>
+                    <div>
+                        <h4
+                            class="flex align-items-center mb-0"
+                            style="font-weight: 600"
+                        >
+                            Customer
+                        </h4>
+                        <div
+                            class="font-normal"
+                            style="line-height: 15px; font-size: 16px"
+                        >
+                            <p class="name">{{ orderDetails.user.name }}</p>
+                            <p class="email">{{ orderDetails.user.email }}</p>
+                            <p class="phone">{{ orderDetails.phone }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- icon 2 -->
+                <div class="icon-2 flex align-items-start">
+                    <i
+                        class="
+                            pi pi-credit-card
+                            mr-2
+                            border-circle
+                            bg-primary
+                            flex
+                            align-items-center
+                            justify-content-center
+                            mt-4
+                        "
+                        style="
+                            font-size: 1rem;
+                            font-weight: 400;
+                            width: 50px;
+                            height: 50px;
+                        "
+                    ></i>
+                    <div>
+                        <h4
+                            class="flex align-items-center mb-0"
+                            style="font-weight: 600"
+                        >
+                            Order info
+                        </h4>
+                        <div
+                            class="font-normal"
+                            style="line-height: 15px; font-size: 16px"
+                        >
+                            <p class="name">Shipping: Fargo express</p>
+                            <p class="email">Pay method: card</p>
+                            <p class="phone">Status: {{orderDetails.status}}</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- icon 3 -->
+                <div class="icon-2 flex align-items-start">
+                    <i
+                        class="
+                            pi pi-map-marker
+                            mr-2
+                            border-circle
+                            bg-primary
+                            flex
+                            align-items-center
+                            justify-content-center
+                            mt-4
+                        "
+                        style="
+                            font-size: 1rem;
+                            font-weight: 400;
+                            width: 50px;
+                            height: 50px;
+                        "
+                    ></i>
+                    <div>
+                        <h4
+                            class="flex align-items-center mb-0"
+                            style="font-weight: 600"
+                        >
+                            Deliver to
+                        </h4>
+                        <div
+                            class="font-normal"
+                            style="line-height: 15px; font-size: 16px"
+                        >
+                            <p class="governerate">gov: {{orderDetails.shippingAddress.governorate}}</p>
+                            <p class="city">city: {{orderDetails.shippingAddress.city}}</p>
+                            <p class="street">street: {{orderDetails.shippingAddress.street}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card pt-6">
+            <p-table responsiveLayout="scroll" [value]="orderDetails.orderItems" rowGroupMode="subheader" >
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th>Product</th>
+                        <th>Unit Price</th>
+                        <th>Quantity</th>
+                        <th>subTotal</th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-order>
+                    <tr>
+                        <td>{{ order.product.name }}</td>
+                        <td>{{ order.product.price| currency }} EGP</td>
+                        <td>{{ order.quantity}}</td>
+                        <td>{{ (order.quantity * order.product.price) | currency}} </td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="groupfooter" let-order>
+                  <tr class="p-rowgroup-footer">
+                      <td colspan="3" style="text-align: right; font-weight:700">Total</td>
+                      <td  style="text-align: left ; font-weight:700">{{orderDetails.total | currency }}</td>
+                  </tr>
+              </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
